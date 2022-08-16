@@ -23,4 +23,9 @@ public class HomeController {
     public String getProductDetails(){
         return restTemplate.getForObject("http://PRODUCT-MICROSERVICE/products",String.class);
     }
+
+    @GetMapping("/product/tablet")
+    public String getTablet(){
+        return restTemplate.getForObject("http://PRODUCT-MICROSERVICE/products/tablet",String.class);
+    }
 }
