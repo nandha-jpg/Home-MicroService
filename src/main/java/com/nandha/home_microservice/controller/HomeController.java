@@ -21,6 +21,6 @@ public class HomeController {
 
     @GetMapping("/products")
     public String getProductDetails(){
-        return restTemplate.getForObject("http://localhost:8082/products",String.class);
+        return restTemplate.getForObject("http://PRODUCT-MICROSERVICE/products",String.class);
     }
 }
