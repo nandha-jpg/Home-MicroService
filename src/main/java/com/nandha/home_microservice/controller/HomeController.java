@@ -1,18 +1,26 @@
 package com.nandha.home_microservice.controller;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
+@RequestMapping("/home")
 public class HomeController {
 
-    @GetMapping("/home")
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @GetMapping
     public String getHome(){
         return "Welcome home!";
     }
 
-    @GetMapping("/home/products")
+    @GetMapping("/products")
     public String getProductDetails(){
-        return "products";
+        return restTemplate.getForObject("http://localhost:8082/products",String.class);
     }
 }
